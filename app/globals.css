@@ -42,6 +42,10 @@
   }
 }
 
+.profile-dropdown-item:hover {
+  background-color: #176D5826;
+}
+
 .dark {
   --background: 23 23 23;
   --foreground: 255 255 255;

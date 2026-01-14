@@ -13,6 +13,8 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip"
 
+import { ProfileDropdown } from "./profile-dropdown"
+
 export function TopHeader() {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
   const [isBudgetOpen, setIsBudgetOpen] = useState(false)
@@ -135,22 +137,7 @@ export function TopHeader() {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Image
-                  src="/Profile.svg"
-                  alt="profile"
-                  width={40}
-                  height={40}
-                  className="hover:scale-110 transition-transform duration-200"
-                />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Profile</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <ProfileDropdown />
         </div>
       </header>
 
