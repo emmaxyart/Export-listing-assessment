@@ -11,14 +11,7 @@ interface CalendarModalProps {
 }
 
 export function CalendarModal({ isOpen, onClose, anchorRect }: CalendarModalProps) {
-  const initialDate = (() => {
-    const today = new Date()
-    today.setFullYear(2023)
-    today.setMonth(10) // November
-    today.setDate(16)
-    return today
-  })()
-  const [currentDate, setCurrentDate] = useState(new Date(initialDate.getFullYear(), initialDate.getMonth(), 1))
+  const [currentDate, setCurrentDate] = useState(new Date())
   const [panelStyle, setPanelStyle] = useState<React.CSSProperties | undefined>(undefined)
 
   useEffect(() => {
@@ -27,7 +20,7 @@ export function CalendarModal({ isOpen, onClose, anchorRect }: CalendarModalProp
       const viewportWidth = window.innerWidth
       const minLeft = 8
       const maxLeft = Math.max(minLeft, viewportWidth - panelWidthPx - 8)
-      const left = Math.min(Math.max(minLeft, Math.round(anchorRect.left) + 40), maxLeft)
+      const left = Math.min(Math.max(minLeft, Math.round(anchorRect.left) - 80), maxLeft)
       const top = Math.round(anchorRect.bottom) + 8
 
       setPanelStyle({
@@ -40,6 +33,8 @@ export function CalendarModal({ isOpen, onClose, anchorRect }: CalendarModalProp
   }, [anchorRect])
 
   if (!isOpen) return null
+
+  const initialDate = new Date()
 
   const monthNames = [
     "January",
@@ -85,7 +80,7 @@ export function CalendarModal({ isOpen, onClose, anchorRect }: CalendarModalProp
     <div className="fixed inset-0 z-50">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       {anchorRect ? (
-        <div style={panelStyle} className="bg-[#0D0D0D] w-full max-w-[400px] h-[750px] bg-background-light dark:bg-background-dark text-[#969696] shadow-2xl relative overflow-hidden flex flex-col">
+        <div style={panelStyle} className="bg-[#0D0D0D] w-full max-w-[400px] bg-background-light dark:bg-background-dark text-[#969696] shadow-2xl relative overflow-hidden flex flex-col">
           {/* Header */}
           <header className="px-4 pt-4 pb-2 flex items-center justify-between">
             <div className="flex items-center gap-4">

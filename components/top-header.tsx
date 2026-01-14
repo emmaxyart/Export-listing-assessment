@@ -6,6 +6,12 @@ import { Wallet, Store, Menu } from "lucide-react"
 import { CalendarModal } from "./calendar-modal"
 import { BudgetModal } from "./budget-modal"
 import { MobileMenu } from "./mobile-menu"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip"
 
 export function TopHeader() {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
@@ -38,28 +44,113 @@ export function TopHeader() {
         </div>
 
         <div className="hidden lg:flex items-center gap-6">
-          <button
-            onClick={openBudget}
-            className="cursor-pointer hover:opacity-80 transition-opacity"
-          >
-            <Image src="/budget.png" alt="Budget" width={36} height={36} />
-          </button>
-          <button
-            ref={calendarBtnRef}
-            onClick={openCalendar}
-            className="cursor-pointer hover:opacity-80 transition-opacity"
-          >
-            <Image src="/calendar.svg" alt="Calendar" width={36} height={36} />
-          </button>
-          <Image src="/search.png" alt="search" width={32} height={32} />
-          <Image src="/Payout.svg" alt="payout" width={32} height={32} />
-          <Image
-            src="/Marketplace.svg"
-            alt="marketplace"
-            width={30.86}
-            height={30.86}
-          />
-          <Image src="/Profile.svg" alt="profile" width={40} height={40} />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={openBudget}
+                  className="cursor-pointer hover:opacity-80 transition-opacity group"
+                >
+                  <Image
+                    src="/budget.png"
+                    alt="Budget"
+                    width={36}
+                    height={36}
+                    className="group-hover:scale-110 transition-transform duration-200"
+                  />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Budget</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  ref={calendarBtnRef}
+                  onClick={openCalendar}
+                  className="cursor-pointer hover:opacity-80 transition-opacity group"
+                >
+                  <Image
+                    src="/calendar.svg"
+                    alt="Calendar"
+                    width={36}
+                    height={36}
+                    className="group-hover:scale-110 transition-transform duration-200"
+                  />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Calendar</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Image
+                  src="/search.png"
+                  alt="search"
+                  width={32}
+                  height={32}
+                  className="hover:scale-110 transition-transform duration-200"
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Search</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Image
+                  src="/Payout.svg"
+                  alt="payout"
+                  width={32}
+                  height={32}
+                  className="hover:scale-110 transition-transform duration-200"
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Payout</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Image
+                  src="/Marketplace.svg"
+                  alt="marketplace"
+                  width={30.86}
+                  height={30.86}
+                  className="hover:scale-110 transition-transform duration-200"
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Marketplace</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Image
+                  src="/Profile.svg"
+                  alt="profile"
+                  width={40}
+                  height={40}
+                  className="hover:scale-110 transition-transform duration-200"
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Profile</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       </header>
 
