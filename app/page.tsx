@@ -18,8 +18,6 @@ export default function Dashboard() {
             <UsersOverview />
           </div>
         </div>
-
-        {/* Featured Listings */}
         <FeaturedListings />
       </main>
     </div>
