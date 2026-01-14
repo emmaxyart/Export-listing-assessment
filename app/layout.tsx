@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import { TopHeader } from "@/components/top-header"
+import { Navigation } from "@/components/navigation"
 
 export const metadata: Metadata = {
   title: "Expert Listing - Dashboard",
@@ -26,7 +28,9 @@ export default function RootLayout({
           }
         `}</style>
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className={`font-sans antialiased bg-[#F9FAFB]`}>
+        <TopHeader />
+        <Navigation />
         {children}
         <Analytics />
       </body>

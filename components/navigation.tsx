@@ -1,32 +1,24 @@
-"use client"
+"use client";
 
-import {
-  Home,
-  Calendar,
-  Users,
-  FileText,
-  Briefcase,
-  CheckSquare,
-} from "lucide-react"
-import { usePathname } from "next/navigation"
-import Link from "next/link"
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import SVG from "react-inlinesvg";
 
 export function Navigation() {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const navItems = [
-    { href: "/", icon: Home, label: "Dashboard" },
-    { href: "/listings", icon: Calendar, label: "Listings" },
-    { href: "/users", icon: Users, label: "Users" },
-    { href: "/request", icon: FileText, label: "Request" },
-    { href: "/applications", icon: Briefcase, label: "Applications" },
-    { href: "/tasks", icon: CheckSquare, label: "Tasks" },
-  ]
+    { href: "/", icon: "/Home.svg", label: "Dashboard" },
+    { href: "/listings", icon: "/Toolbox.svg", label: "Listings" },
+    { href: "/users", icon: "/Users.svg", label: "Users" },
+    { href: "/request", icon: "/Request.svg", label: "Request" },
+    { href: "/applications", icon: "/Application.svg", label: "Applications" },
+    { href: "/tasks", icon: "/Task.svg", label: "Tasks" },
+  ];
 
   return (
     <nav className="hidden lg:flex w-full bg-white px-6 sm:px-12 py-3 sm:py-4 items-center justify-between">
       {navItems.map((item, index) => {
-        const Icon = item.icon
-        const isActive = pathname === item.href
+        const isActive = pathname === item.href;
         return (
           <Link
             key={index}
@@ -37,11 +29,18 @@ export function Navigation() {
                 : "text-foreground hover:bg-[#176D5826] hover:text-[#176D58]"
             }`}
           >
-            <Icon className="w-4 sm:w-5 h-4 sm:h-5" />
+            <SVG
+              src={item.icon}
+              className={`w-6 h-6 ${
+                isActive || item.href === "/"
+                  ? "active-icon"
+                  : "inactive-icon"
+              }`}
+            />
             <span className="text-[14px] sm:text-sm">{item.label}</span>
           </Link>
-        )
+        );
       })}
     </nav>
-  )
+  );
 }

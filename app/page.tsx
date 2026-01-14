@@ -1,5 +1,3 @@
-import { TopHeader } from "@/components/top-header"
-import { Navigation } from "@/components/navigation"
 import { SalesOverview } from "@/components/sales-overview"
 import { ListingsOverview } from "@/components/listings-overview"
 import { UsersOverview } from "@/components/users-overview"
@@ -8,9 +6,6 @@ import { FeaturedListings } from "@/components/featured-listings"
 export default function Dashboard() {
   return (
     <div className="min-h-screen bg-background">
-      <TopHeader />
-      <Navigation />
-
       <main className="px-4 sm:px-12 py-4 bg-[#F9FAFB] sm:py-6">
         <h1 className="text-2xl sm:text-3xl text-[#191919] font-semibold mb-6 sm:mb-6 text-Type-face">Welcome, Ahmed</h1>
 
