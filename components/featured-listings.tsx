@@ -22,7 +22,7 @@ export function FeaturedListings() {
     {
       title: "Urban Prime Plaza Premiere",
       subtitle: "HOTTEST LISTING",
-      image: "/hottest.png",
+      image: "/Hottest-listing.png",
     },
   ]
 
