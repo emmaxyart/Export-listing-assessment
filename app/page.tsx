@@ -13,7 +13,7 @@ export default function Dashboard() {
           <div className="md:col-span-2">
             <SalesOverview />
           </div>
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-4 sm:space-y-4">
             <ListingsOverview />
             <UsersOverview />
           </div>

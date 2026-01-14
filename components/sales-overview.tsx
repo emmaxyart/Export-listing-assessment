@@ -98,7 +98,7 @@ export function SalesOverview() {
   );
 
   return (
-    <Card className="border-none bg-white py-4 gap-4">
+    <Card className="bg-white py-4 gap-4 border border-[#D6D6D6] rounded-2xl shadow-none">
       <CardHeader className="pb-0">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
@@ -111,8 +111,8 @@ export function SalesOverview() {
         </div>
       </CardHeader>
 
-      <CardContent>
-        <div className="flex justify-end gap-2 flex-wrap -mt-4 mb-6">
+      <CardContent className="pb-0">
+        <div className="flex justify-end gap-2 flex-wrap -mt-4 mb-2">
           {["1 Week", "1 Month", "1 Year"].map((period) => (
             <Button
               key={period}
@@ -125,7 +125,9 @@ export function SalesOverview() {
             </Button>
           ))}
         </div>
-
+      </CardContent>
+      <div className="h-px bg-[#E4E4E4]" />
+      <CardContent>
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 lg:items-start">
           <div className="w-full lg:w-[50%] min-w-0">
             <SalesChart />
