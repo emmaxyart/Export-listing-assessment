@@ -14,7 +14,8 @@ type StatCardProps = {
   change: "up" | "down"
   valueColor: string
   changeColor: string
-}
+  icon?: string
+};
 
 const salesData: StatCardProps[] = [
   {
@@ -24,6 +25,7 @@ const salesData: StatCardProps[] = [
     change: "up",
     valueColor: "text-[#4545FE]",
     changeColor: "text-[#12B76A]",
+    icon: "/rate-1.svg",
   },
   {
     title: "MRR",
@@ -32,6 +34,7 @@ const salesData: StatCardProps[] = [
     change: "up",
     valueColor: "text-[#12B76A]",
     changeColor: "text-[#12B76A]",
+    icon: "/rate-1.svg",
   },
   {
     title: "Commission Revenue",
@@ -40,6 +43,7 @@ const salesData: StatCardProps[] = [
     change: "up",
     valueColor: "text-[#14B8A6]",
     changeColor: "text-[#14B8A6]",
+    icon: "/rate-2.svg",
   },
   {
     title: "GMV",
@@ -48,22 +52,32 @@ const salesData: StatCardProps[] = [
     change: "down",
     valueColor: "text-[#F04438]",
     changeColor: "text-[#F04438]",
+    icon: "/rate-3.svg",
   },
 ]
 
-const ChangeIndicator = ({ change }: { change: "up" | "down" }) => {
-  const isUp = change === "up"
-  const Icon = isUp ? ArrowUp : ArrowDown
+const ChangeIndicator = ({
+  change,
+  icon,
+}: {
+  change: "up" | "down";
+  icon?: string;
+}) => {
+  if (icon) {
+    return <Image src={icon} alt="icon" width={16} height={16} />;
+  }
+  const isUp = change === "up";
+  const Icon = isUp ? ArrowUp : ArrowDown;
   const iconWrapperClass = isUp
     ? "w-4 h-4 rounded-full bg-green-100 flex items-center justify-center"
-    : "w-4 h-4 rounded-full bg-red-100 flex items-center justify-center"
+    : "w-4 h-4 rounded-full bg-red-100 flex items-center justify-center";
 
   return (
     <div className={iconWrapperClass}>
       <Icon className="h-2.5 w-2.5" />
     </div>
-  )
-}
+  );
+};
 
 const StatCard = ({
   title,
@@ -72,13 +86,14 @@ const StatCard = ({
   change,
   valueColor,
   changeColor,
+  icon,
 }: StatCardProps) => (
-  <div className="bg-white border border-[#E4E4E4] rounded-[12px] p-4">
+  <div className="bg-white border border-[#E4E4E4] rounded-[12px] p-3">
     <p className={`text-[19px] font-semibold ${valueColor}`}>{value}</p>
-    <div className="flex items-center justify-between">
+    <div className="flex items-center gap-2 mt-1">
       <span className="text-[10px] font-medium text-[#3D3D3D]">{title}</span>
       <div className={`flex items-center gap-1 ${changeColor}`}>
-        <ChangeIndicator change={change} />
+        <ChangeIndicator change={change} icon={icon} />
         <span className="text-[10px] font-regular">{percentage}</span>
       </div>
     </div>
